@@ -11,13 +11,11 @@
   import EvaIcon from "../lib/eva-icon.svelte";
   import { load } from "../posts/post-meta";
   import { params } from "svelte-spa-router";
-  import Gitalk from "gitalk";
-  import { onMount } from "svelte";
   import "gitalk/dist/gitalk.css";
 
   let tip = "少女祈祷中";
   let timer = 0;
-  let post_promise: Promise<PostModule>;
+  let postPromise: Promise<PostModule>;
   let id = "";
   $: {
     if ($params) {
@@ -26,31 +24,34 @@
         () => (tip = "看起来你的网络状况似乎不太好😜"),
         15000
       ) as unknown as number;
-      post_promise = load(id).finally(() => clearTimeout(timer));
+      postPromise = load(id).finally(() => clearTimeout(timer));
     }
   }
 
   let gitalkElement: HTMLDivElement;
-  let gitalkInstance: Gitalk;
+  let gitalkPromise: Promise<void>;
   $: {
-    if (id && !gitalkInstance) {
-      gitalkInstance = new Gitalk({
-        clientID: "63ca1562790374a0dc3e",
-        clientSecret: "5cd7543274b19bb38582803b95175f2e4b518aec",
-        repo: "chrock-space",
-        owner: "JuerGenie",
-        admin: ["JuerGenie"],
-        id: `chrock-space-${location.hash}`,
-        title: id,
+    if (id && !gitalkPromise) {
+      gitalkPromise = import("gitalk").then((mod) => {
+        const { default: Gitalk } = mod;
+        let gitalkInstance = new Gitalk({
+          clientID: "63ca1562790374a0dc3e",
+          clientSecret: "5cd7543274b19bb38582803b95175f2e4b518aec",
+          repo: "chrock-space",
+          owner: "JuerGenie",
+          admin: ["JuerGenie"],
+          id: `chrock-space-${location.hash}`,
+          title: id,
+        });
+        gitalkInstance.render(gitalkElement);
       });
-      gitalkInstance.render(gitalkElement);
     }
   }
 </script>
 
 <template>
-  {#if post_promise}
-    {#await post_promise}
+  {#if postPromise}
+    {#await postPromise}
       <div class="loading">
         <EvaIcon name="eva-star" />
         <p>少女祈祷中</p>
@@ -60,6 +61,14 @@
     {/await}
   {/if}
   <hr />
+  {#if gitalkPromise}
+    {#await gitalkPromise}
+      <div class="loading">
+        <EvaIcon name="eva-star" />
+        <p>评论祈祷中</p>
+      </div>
+    {/await}
+  {/if}
   <div class="gitalk" bind:this={gitalkElement} />
 </template>
 

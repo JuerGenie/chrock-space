@@ -72,12 +72,6 @@
       <div class="post">
         <h3>
           <a href="#/post/{post.META.title}">{post.META.title}</a>
-          <!-- <ChrockButton
-            type="text"
-            on:click={() => push(`#/post/${post.META.title}`)}
-          >
-            {post.META.title}
-          </ChrockButton> -->
         </h3>
         <div>
           <div>文章分组</div>
