@@ -13,6 +13,7 @@
   import { params } from "svelte-spa-router";
   import Gitalk from "gitalk";
   import { onMount } from "svelte";
+  import "gitalk/dist/gitalk.css";
 
   let tip = "少女祈祷中";
   let timer = 0;
@@ -30,22 +31,16 @@
   let gitalkElement: HTMLDivElement;
   let gitalkInstance: Gitalk;
   onMount(() => {
-    console.log("create gitalk", {
+    gitalkInstance = new Gitalk({
       clientID: "63ca1562790374a0dc3e",
       clientSecret: "5cd7543274b19bb38582803b95175f2e4b518aec",
       repo: "chrock-space",
       owner: "JuerGenie",
       admin: ["JuerGenie"],
-      id: location.pathname,
+      id: `chrock-space-${location.hash}`,
+      title: $params.id,
     });
-    // gitalkInstance = new Gitalk({
-    //   clientID: "63ca1562790374a0dc3e",
-    //   clientSecret: "5cd7543274b19bb38582803b95175f2e4b518aec",
-    //   repo: "chrock-space",
-    //   owner: "JuerGenie",
-    //   admin: ["JuerGenie"],
-    //   id: location.pathname,
-    // });
+    gitalkInstance.render(gitalkElement);
   });
 </script>
 
@@ -60,7 +55,8 @@
       <svelte:component this={post.default} />
     {/await}
   {/if}
-  <div bind:this={gitalkElement} />
+  <hr />
+  <div class="gitalk" bind:this={gitalkElement} />
 </template>
 
 <style lang="scss">
@@ -78,6 +74,10 @@
 
       animation: roll 5s infinite ease-in-out;
     }
+  }
+
+  .gitalk {
+    padding: 0 2rem;
   }
 
   @keyframes roll {
