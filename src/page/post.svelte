@@ -18,30 +18,34 @@
   let tip = "少女祈祷中";
   let timer = 0;
   let post_promise: Promise<PostModule>;
+  let id = "";
   $: {
     if ($params) {
+      id = $params.id;
       timer = setTimeout(
         () => (tip = "看起来你的网络状况似乎不太好😜"),
         15000
       ) as unknown as number;
-      post_promise = load($params.id).finally(() => clearTimeout(timer));
+      post_promise = load(id).finally(() => clearTimeout(timer));
     }
   }
 
   let gitalkElement: HTMLDivElement;
   let gitalkInstance: Gitalk;
-  onMount(() => {
-    gitalkInstance = new Gitalk({
-      clientID: "63ca1562790374a0dc3e",
-      clientSecret: "5cd7543274b19bb38582803b95175f2e4b518aec",
-      repo: "chrock-space",
-      owner: "JuerGenie",
-      admin: ["JuerGenie"],
-      id: `chrock-space-${location.hash}`,
-      title: $params.id,
-    });
-    gitalkInstance.render(gitalkElement);
-  });
+  $: {
+    if (id && !gitalkInstance) {
+      gitalkInstance = new Gitalk({
+        clientID: "63ca1562790374a0dc3e",
+        clientSecret: "5cd7543274b19bb38582803b95175f2e4b518aec",
+        repo: "chrock-space",
+        owner: "JuerGenie",
+        admin: ["JuerGenie"],
+        id: `chrock-space-${location.hash}`,
+        title: id,
+      });
+      gitalkInstance.render(gitalkElement);
+    }
+  }
 </script>
 
 <template>
