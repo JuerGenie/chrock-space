@@ -15,6 +15,7 @@
   let canToTop = false;
 
   onMount(() => {
+    console.log("init chrock-space, routes: ", routes);
     if (main) {
       main.addEventListener("scroll", () => {
         canToTop = !!main.scrollTop;

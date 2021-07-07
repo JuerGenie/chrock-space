@@ -2,19 +2,20 @@ import type { SvelteComponent } from "svelte";
 import type { RouteDefinition } from "svelte-spa-router";
 import { push as _push } from "svelte-spa-router";
 
-const pages = import.meta.glob("./**.svelte");
+const pages = import.meta.globEager("./**.svelte");
 const routes = {} as RouteDefinition;
 
 console.log("[routes] loading pages: ", Object.keys(pages));
 const mods = await Promise.all(
   Object.keys(pages).map(async (key) => {
-    const mod = (await pages[key]()) as {
+    const mod = pages[key] as {
       default: SvelteComponent;
       routes: {
         path: string[];
         order?: number;
       };
     };
+    console.log(mod);
     if (mod.routes) {
       if (!mod.routes.order) {
         mod.routes.order = -Infinity;
