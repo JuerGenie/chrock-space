@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [svelte()],
   build: {
     target: ["esnext"],
+    outDir: "./docs",
   },
 });
