@@ -1,0 +1,109 @@
+/* 常规 */
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-regular.ttf");
+  font-weight: 500;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-italic.ttf");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Light */
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-light.ttf");
+  font-weight: 400;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-lightitalic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Sarasa Mono SC Light";
+  src: url("./sarasa-mono-sc-light.ttf");
+}
+@font-face {
+  font-family: "Sarasa Mono SC Light";
+  src: url("./sarasa-mono-sc-lightitalic.ttf");
+  font-style: italic;
+}
+
+/* Extra Light */
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-extralight.ttf");
+  font-weight: 300;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-extralightitalic.ttf");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Sarasa Mono SC Extra Light";
+  src: url("./sarasa-mono-sc-extralight.ttf");
+}
+@font-face {
+  font-family: "Sarasa Mono SC Extra Light";
+  src: url("./sarasa-mono-sc-extralightitalic.ttf");
+  font-style: italic;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-bold.ttf");
+  font-weight: 700;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-bolditalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Sarasa Mono SC Bold";
+  src: url("./sarasa-mono-sc-bold.ttf");
+}
+@font-face {
+  font-family: "Sarasa Mono SC Bold";
+  src: url("./sarasa-mono-sc-bolditalic.ttf");
+  font-style: italic;
+}
+
+/* Semi Bold */
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-semibold.ttf");
+  font-weight: 600;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Sarasa Mono SC";
+  src: url("./sarasa-mono-sc-semibolditalic.ttf");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Sarasa Mono SC Semi Bold";
+  src: url("./sarasa-mono-sc-semibold.ttf");
+}
+@font-face {
+  font-family: "Sarasa Mono SC Semi Bold";
+  src: url("./sarasa-mono-sc-semibolditalic.ttf");
+  font-style: italic;
+}

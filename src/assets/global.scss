@@ -1,0 +1,54 @@
+.stroke {
+  --inner-stroke-color: var(--stroke-color, #fff);
+  --inner-stroke-width: var(--stroke-width, 2px);
+
+  text-shadow: var(--inner-stroke-width) 0 0 var(--inner-stroke-color),
+    0 var(--inner-stroke-width) 0 var(--inner-stroke-color),
+    calc(var(--inner-stroke-width) * -1) 0 0 var(--inner-stroke-color),
+    0 calc(var(--inner-stroke-width) * -1) 0 var(--inner-stroke-color),
+    calc(var(--inner-stroke-width) * -1) var(--inner-stroke-width) 0
+      var(--inner-stroke-color),
+    var(--inner-stroke-width) calc(var(--inner-stroke-width) * -1) 0
+      var(--inner-stroke-color),
+    calc(var(--inner-stroke-width) * -1) calc(var(--inner-stroke-width) * -1) 0
+      var(--inner-stroke-color),
+    var(--inner-stroke-width) var(--inner-stroke-width) 0
+      var(--inner-stroke-color);
+}
+
+:root {
+  --scroll-width: var(--border-radius);
+
+  color: var(--text-color);
+}
+.chrock-scroll {
+  &::-webkit-scrollbar {
+    width: var(--scroll-width);
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: calc(var(--scroll-width) / 2);
+
+    &:hover {
+      background-color: hsla(
+        var(--subject-color-h),
+        var(--subject-color-s),
+        var(--subject-color-l),
+        0.5
+      );
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: calc(var(--scroll-width) / 2);
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+
+    &:hover {
+      background-color: var(--primary-color-lighten-1);
+    }
+  }
+  // &::-webkit-scrollbar-corner {
+  //   background-color: aquamarine;
+  // }
+}

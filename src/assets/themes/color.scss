@@ -1,0 +1,70 @@
+@use 'sass:math';
+
+:root {
+  /*
+  主题颜色，使用 HSL 色彩空间，方便进行计算
+  */
+  $default-theme-color: #3f7da6;
+
+  --theme-color-h: 200;
+  --theme-color-s: 45%;
+  --theme-color-l: 45%;
+  /*
+  次要颜色
+  */
+  --subject-color-h: 0;
+  --subject-color-s: 0%;
+  --subject-color-l: 50%;
+
+  --font-color-dark: hsl(0, 0%, 20%);
+  --font-color-light: hsl(0, 0%, 90%);
+
+  --primary-color: hsl(
+    var(--theme-color-h),
+    var(--theme-color-s),
+    var(--theme-color-l)
+  );
+  --secondary-color: hsl(
+    var(--subject-color-h),
+    var(--subject-color-s),
+    var(--subject-color-l)
+  );
+
+  /*
+  其他衍生色。
+  */
+  @for $index from 1 to 11 {
+    --primary-color-lighten-#{$index}: hsl(
+      var(--theme-color-h),
+      var(--theme-color-s),
+      calc(var(--theme-color-l) * #{1 + math.div($index, 10)})
+    );
+    --primary-color-darken-#{$index}: hsl(
+      var(--theme-color-h),
+      var(--theme-color-s),
+      calc(var(--theme-color-l) * #{1 - math.div($index, 10)})
+    );
+
+    --secondary-color-lighten-#{$index}: hsl(
+      var(--subject-color-h),
+      var(--subject-color-s),
+      calc(var(--subject-color-l) * #{1 + math.div($index, 10)})
+    );
+    --secondary-color-darken-#{$index}: hsl(
+      var(--subject-color-h),
+      var(--subject-color-s),
+      calc(var(--subject-color-l) * #{1 - math.div($index, 10)})
+    );
+  }
+
+  // 文本颜色
+  --text-color: var(--font-color-dark);
+  // 可用背景色
+  --background-color: var(--secondary-color-lighten-8);
+  // --background-color: hsl(
+  //   var(--subject-color-h),
+  //   var(--subject-color-s),
+  //   calc(var(--subject-color-l) * 1.8),
+  //   90%
+  // );
+}

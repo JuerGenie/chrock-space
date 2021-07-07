@@ -1,0 +1,30 @@
+@import "./assets/global.scss";
+
+:root {
+  font-family: var(--font-family);
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+hr {
+  border-color: #333;
+  border-width: 1px;
+  border-radius: 0.5px;
+
+  &.inset {
+    width: calc(100% - 4rem);
+  }
+}
